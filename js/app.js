@@ -9,6 +9,14 @@ class Note {
 
 // UI Class
 class UI {
+  // Display Name
+  static displayName(){
+    const name = Store.getName()
+
+    const el = document.querySelector('#name')
+    el.textContent = name
+  }
+
   // Display note list
   static displayNotes() {
     
@@ -74,6 +82,22 @@ class UI {
 
 // Store
 class Store {
+  // Name store
+  static getName(){
+    let name
+    if(localStorage.getItem('name') === null || JSON.parse(localStorage.getItem('name')) == ""){
+      name = 'Quickly and easily note with Barenote.'
+    } else {
+      name = JSON.parse(localStorage.getItem('name'))
+    }
+    return name
+  }
+
+  static setName(name){
+    localStorage.setItem('name', JSON.stringify(name))
+  }
+
+  // Note store
   static getNotes(){
     let notes
     if(localStorage.getItem('notes') === null){
@@ -125,8 +149,19 @@ class Store {
   }
 }
 
+// Event: Set name
+document.querySelector('#name').addEventListener('click', () => {
+  const name = prompt('What the name you would like to set ?')
+  
+  // Store
+  Store.setName(name)
+  
+    // UI
+    UI.displayName(name)
+})
 
 // Event: Display Notes
+document.addEventListener('DOMContentLoaded', UI.displayName)
 document.addEventListener('DOMContentLoaded', UI.displayNotes)
 
 // Event: Add a note
