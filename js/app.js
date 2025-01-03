@@ -24,24 +24,44 @@ class UI {
     const row = document.createElement('tr')
     row.innerHTML = `
       <th scope="row">${note.id}</th>
-      <td>฿ ${ note.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</td>
+      <td class="cost">฿ ${ note.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</td>
       <td class="text">${note.text}</td>
-      <td><a href='#' class="btn btn-danger btn-sm delete round">X</a></td>
+      <td><a href='#' class="btn btn-danger btn-sm delete rounded-circle" type="button">X</a></td>
     `
     list.appendChild(row)
   }
 
   // Update a note
   static updateNote(el){
+    
+    const id = el.parentElement.firstElementChild.textContent
+
+    const notes = Store.getNotes()
+    const note = notes.filter(e => e.id == id)[0]
+
+    let newNote = note
+
+    // console.log(notes)
+    // console.log(newNote)
+
     if(el.classList.contains('text')){
       // console.log(el.textContent)
       const text = prompt('How change ?', el.textContent)
       el.textContent = text
-
-      // Update note from Store
-      Store.updateNote(el, text)
+      
+      newNote = {...note, 'text': text}
     }
 
+    if(el.classList.contains('cost')){
+      // console.log(el.textContent)
+      const cost = prompt('How much ?', el.textContent)
+      el.textContent = cost
+      
+      newNote = {...note, 'cost': cost}
+    }
+    
+    // Update note from Store
+    Store.updateNote(id, newNote)
   }
 
   // Delete a note
@@ -70,16 +90,27 @@ class Store {
     localStorage.setItem('notes', JSON.stringify(notes))
   }
 
-  static updateNote(el, text){
-    const id = el.parentElement.firstElementChild.textContent
+  static updateNote(id, {text, cost}){
+    // console.log(newNote)
     const notes = Store.getNotes()
-    notes.forEach((note, index) => {
+    let newNotes = []
+    notes.forEach(note => {
       if(note.id == id){
-        note.text = text
+        newNotes.push({id, text, cost})
+      }else{
+        newNotes.push(note)
       }
     })
+    
 
-    localStorage.setItem('notes', JSON.stringify(notes))
+    console.log(newNotes)
+
+    localStorage.setItem('notes', JSON.stringify(newNotes))
+    // console.log({...notes, {id, text: newNote.text, cost: newNote.cost}})
+    
+    // const nn = {...notes, {id:id, text: newNote.text, cost: newNote.cost}}
+
+    // localStorage.setItem('notes', JSON.stringify(newNotes))
   }
 
   static removeNote(id){
