@@ -171,10 +171,12 @@ function updateDateTime() {
   const now = new Date();
 
   // get the current date and time as a string
-  const currentDateTime = now.toLocaleString();
+  const currentDateTime = now.toLocaleString()
+  const currentDateTimeString = now.toISOString().slice(0,10)
 
   // update the `textContent` property of the `span` element with the `id` of `datetime`
   document.querySelector('#datetime').textContent = currentDateTime;
+  document.title = 'Barenote_' + currentDateTimeString;
 }
 
 // call the `updateDateTime` function every second
