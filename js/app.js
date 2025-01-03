@@ -155,6 +155,9 @@ document.querySelector('#note-list').addEventListener('click', (e) => {
 
 // Event: Remove a note
 document.querySelector('#note-list').addEventListener('click', (e) => {
+  if(!confirm('Are your sure to delete this record ?')){
+    return 0
+  }
   // Delete note from UI
   UI.deleteNote(e.target)
 
