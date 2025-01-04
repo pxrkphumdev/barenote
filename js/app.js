@@ -32,7 +32,7 @@ class UI {
     const row = document.createElement('tr')
     row.innerHTML = `
       <th scope="row">${note.id}</th>
-      <td class="cost">฿ ${ note.cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</td>
+      <td class="cost">${ note.cost }</td>
       <td class="text">${note.text}</td>
       <td><a href='#' class="btn btn-danger btn-sm delete rounded-circle" type="button">X</a></td>
     `
@@ -62,7 +62,9 @@ class UI {
 
     if(el.classList.contains('cost')){
       // console.log(el.textContent)
-      const cost = prompt('How much ?', el.textContent)
+      // const cost = prompt('How much ?', el.textContent)
+      const cost = '฿ ' + prompt('How much ?', el.textContent).replace(/\D/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
       el.textContent = cost
       
       newNote = {...note, 'cost': cost}
@@ -110,7 +112,7 @@ class Store {
 
   static addNote(note){
     const notes = Store.getNotes()
-    notes.push(note)
+    notes.push({note})
     localStorage.setItem('notes', JSON.stringify(notes))
   }
 
@@ -127,7 +129,7 @@ class Store {
     })
     
 
-    console.log(newNotes)
+    // console.log(newNotes)
 
     localStorage.setItem('notes', JSON.stringify(newNotes))
     // console.log({...notes, {id, text: newNote.text, cost: newNote.cost}})
@@ -166,10 +168,12 @@ document.addEventListener('DOMContentLoaded', UI.displayNotes)
 
 // Event: Add a note
 document.querySelector('#note-add').addEventListener('click', () => {
-  const id = Store.getNotes().length == 0 ? 1 : Store.getNotes()[Store.getNotes().length-1].id+1
-  console.log(id)
+  const id = Store.getNotes().length == 0 ? 1 : parseInt(Store.getNotes()[Store.getNotes().length-1].id)+1
+  // console.log(id)
   const text = prompt('What would you like to note ?')
-  const cost = prompt('How much ?')
+  const cost = '฿ ' + prompt('How much ?').replace(/\D/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+  console.log(cost)
 
   const note = {id, text, cost}
 
@@ -190,6 +194,10 @@ document.querySelector('#note-list').addEventListener('click', (e) => {
 
 // Event: Remove a note
 document.querySelector('#note-list').addEventListener('click', (e) => {
+  if(!e.target.classList.contains('delete')){
+    return 0
+  }
+
   if(!confirm('Are your sure to delete this record ?')){
     return 0
   }
