@@ -17,6 +17,15 @@ class UI {
     el.textContent = name
   }
 
+  // Display total
+  static displayTotal(){
+    const notes = Store.getNotes()
+    let total = 0
+
+    total = notes.reduce((sum, note) => sum + parseInt(note.cost.replace(/\D/g,'')), 0)
+    document.querySelector('#total').textContent = '฿ ' + total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  }
+
   // Display note list
   static displayNotes() {
     
@@ -32,7 +41,7 @@ class UI {
     const row = document.createElement('tr')
     row.innerHTML = `
       <th scope="row">${note.id}</th>
-      <td class="cost" class="d-inline-flex">${ note.cost }</td>
+      <td class="cost" class="d-inline-flex text-nowrap">${ note.cost }</td>
       <td class="text">${note.text}</td>
       <td><button type="button" class="btn btn-danger btn-sm delete " type="button">X</button></td>
     `
@@ -84,6 +93,16 @@ class UI {
 
 // Store
 class Store {
+  static setTotal(){
+    const notes = Store.getNotes()
+    let total = 0
+
+    total = notes.reduce((sum, note) => sum + parseInt(note.cost.replace(/\D/g,'')), 0)
+    document.querySelector('#total').textContent = '฿ ' + total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+    localStorage.setItem('total', JSON.stringify(total))
+  }
+
   // Name store
   static getName(){
     let name
@@ -158,13 +177,14 @@ document.querySelector('#name').addEventListener('click', () => {
   // Store
   Store.setName(name)
   
-    // UI
-    UI.displayName(name)
+  // UI
+  UI.displayName(name)
 })
 
 // Event: Display Notes
 document.addEventListener('DOMContentLoaded', UI.displayName)
 document.addEventListener('DOMContentLoaded', UI.displayNotes)
+document.addEventListener('DOMContentLoaded', UI.displayTotal)
 
 // Event: Add a note
 document.querySelector('#note-add').addEventListener('click', () => {
@@ -173,21 +193,27 @@ document.querySelector('#note-add').addEventListener('click', () => {
   const text = prompt('What would you like to note ?')
   const cost = '฿ ' + prompt('How much ?').replace(/\D/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
-  console.log(cost)
+  // console.log(cost)
 
   const note = {id, text, cost}
 
   // Add note to UI
-  UI.addNoteToList(note)
-
+  
   // Add note to Store
   Store.addNote(note)
+  UI.addNoteToList(note)
+
+  // Display total
+  UI.displayTotal()
 })
 
 // Event: Update a note
 document.querySelector('#note-list').addEventListener('click', (e) => {
   // Update note from UI
   UI.updateNote(e.target)
+
+  // Display total
+  UI.displayTotal()
 
 })
 
@@ -202,10 +228,13 @@ document.querySelector('#note-list').addEventListener('click', (e) => {
     return 0
   }
   // Delete note from UI
-  UI.deleteNote(e.target)
-
+  
   // Delete note from Store
   Store.removeNote(e.target.parentElement.parentElement.firstElementChild.textContent)
+  UI.deleteNote(e.target)
+
+  // Display total
+  UI.displayTotal()
 })
 
 
