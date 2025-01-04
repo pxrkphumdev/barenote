@@ -34,7 +34,7 @@ class UI {
       <th scope="row">${note.id}</th>
       <td class="cost">${ note.cost }</td>
       <td class="text">${note.text}</td>
-      <td><a href='#' class="btn btn-danger btn-sm delete rounded-circle" type="button">X</a></td>
+      <td><button type="button" class="btn btn-danger btn-sm delete " type="button">X</button></td>
     `
     list.appendChild(row)
   }
