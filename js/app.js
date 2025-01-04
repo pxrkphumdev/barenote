@@ -112,7 +112,7 @@ class Store {
 
   static addNote(note){
     const notes = Store.getNotes()
-    notes.push({note})
+    notes.push(note)
     localStorage.setItem('notes', JSON.stringify(notes))
   }
 
