@@ -32,7 +32,7 @@ class UI {
     const row = document.createElement('tr')
     row.innerHTML = `
       <th scope="row">${note.id}</th>
-      <td class="cost">${ note.cost }</td>
+      <td class="cost" class="d-inline-flex">${ note.cost }</td>
       <td class="text">${note.text}</td>
       <td><button type="button" class="btn btn-danger btn-sm delete " type="button">X</button></td>
     `
