@@ -1,4 +1,4 @@
-class Counter {
+class Countdown {
   constructor(el, TIME_LIMIT) {
     this.el = el
     this.elId = this.el.getAttribute('id')
@@ -98,7 +98,7 @@ class Counter {
   resetTimer() {
     clearInterval(this.elId)
     this.timePassed = 0
-    new Counter(this.el, this.TIME_LIMIT)
+    new Countdown(this.el, this.TIME_LIMIT)
 
   }
 
@@ -142,11 +142,11 @@ class Counter {
 
 }
 
-// Instantiate Counter
-const cd1 = new Counter(document.getElementById('cd1'), 5 * 60)
-const cd2 = new Counter(document.getElementById('cd2'), 10 * 60)
-const cd3 = new Counter(document.getElementById('cd3'), 20 * 60)
-const cd4 = new Counter(document.getElementById('cd4'), 30 * 60)
+// Instantiate Countdown
+const cd1 = new Countdown(document.getElementById('cd1'), 5 * 60)
+const cd2 = new Countdown(document.getElementById('cd2'), 10 * 60)
+const cd3 = new Countdown(document.getElementById('cd3'), 20 * 60)
+const cd4 = new Countdown(document.getElementById('cd4'), 30 * 60)
 
 // Element
 const timestart = document.getElementById('timestart')
@@ -160,6 +160,7 @@ const continueBtn = document.getElementById('continue')
 const clearBtn = document.getElementById('clear')
 const resetBtn = document.getElementById('reset')
 const cd4el = document.getElementById('cd4')
+const cd5el = document.getElementById('cd5')
 
 
 // Event: Handler
@@ -168,7 +169,9 @@ startBtn.addEventListener('click', () => {
   cd2.startTimer()
   cd3.startTimer()
   cd4.startTimer()
+  cd5.startTimer()
   cd4el.classList.remove('hidden')
+  cd5el.classList.remove('hidden')
   startBtn.classList.add('hidden')
   stopBtn.classList.remove('hidden')
   pauseBtn.classList.remove('hidden')
@@ -187,7 +190,9 @@ stopBtn.addEventListener('click', () => {
   cd2.resetTimer()
   cd3.resetTimer()
   cd4.resetTimer()
+  cd5.resetTimer()
   cd4el.classList.add('hidden')
+  cd5el.classList.add('hidden')
   stopBtn.classList.add('hidden')
   startBtn.classList.remove('hidden')
   pauseBtn.classList.add('hidden')
@@ -223,6 +228,7 @@ pauseBtn.addEventListener('click', () => {
   cd2.pauseTimer()
   cd3.pauseTimer()
   cd4.pauseTimer()
+  cd5.pauseTimer()
   pauseBtn.classList.add('hidden')
   continueBtn.classList.remove('hidden')
 })
@@ -231,6 +237,7 @@ continueBtn.addEventListener('click', () => {
   cd2.continueTimer()
   cd3.continueTimer()
   cd4.continueTimer()
+  cd5.continueTimer()
   continueBtn.classList.add('hidden')
   pauseBtn.classList.remove('hidden')
 })
@@ -240,6 +247,7 @@ clearBtn.addEventListener('click', () => {
     cd2.resetTimer()
     cd3.resetTimer()
     cd4.resetTimer()
+    cd5.resetTimer()
 
     const notes = []
     localStorage.setItem('notes', JSON.stringify(notes))
