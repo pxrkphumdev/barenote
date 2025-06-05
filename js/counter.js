@@ -159,9 +159,16 @@ const pauseBtn = document.getElementById('pause')
 const continueBtn = document.getElementById('continue')
 const clearBtn = document.getElementById('clear')
 const resetBtn = document.getElementById('reset')
+const cd4el = document.getElementById('cd4')
+
+
 // Event: Handler
 startBtn.addEventListener('click', () => {
   cd1.startTimer()
+  cd2.startTimer()
+  cd3.startTimer()
+  cd4.startTimer()
+  cd4el.classList.remove('hidden')
   startBtn.classList.add('hidden')
   stopBtn.classList.remove('hidden')
   pauseBtn.classList.remove('hidden')
@@ -170,6 +177,7 @@ startBtn.addEventListener('click', () => {
   timestart.innerHTML = d
   // startShow.innerHTML = `START: ${Datetime.getFullTime(d)}`
 })
+
 stopBtn.addEventListener('click', () => {
   // cd1.pauseTimer()
   // cd2.pauseTimer()
@@ -179,6 +187,7 @@ stopBtn.addEventListener('click', () => {
   cd2.resetTimer()
   cd3.resetTimer()
   cd4.resetTimer()
+  cd4el.classList.add('hidden')
   stopBtn.classList.add('hidden')
   startBtn.classList.remove('hidden')
   pauseBtn.classList.add('hidden')
