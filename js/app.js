@@ -30,7 +30,7 @@ class UI {
     const notes = Store.getNotes()
     let total = 0
 
-    total = notes.reduce((sum, note) => sum + parseInt(note.cost.replace(/\D/g, '')), 0)
+    total = notes.reduce((sum, note) => sum + parseInt(note.cost.toString().replace(/\D/g, '')), 0)
     document.querySelector('#total').textContent = '฿ ' + total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   }
 
@@ -51,7 +51,7 @@ class UI {
       <th scope="row">${note.id}</th>
       <td class="cost" class="d-inline-flex text-nowrap">${note.cost}</td>
       <td class="note">
-       <p class="font-light text-xs italic text-gray-500">[${Datetime.getFullTime(note.time.start)},${Datetime.getFullTime(note.time.stop)}]</p>
+       <p class="font-light text-xs italic text-gray-500">[${Datetime.getFullTime(note.time.start)} , ${Datetime.getFullTime(note.time.stop)}]</p>
        <p class="text">${note.text}</p>
       </td>
       <td><button type="button" class="bg-red-500 text-white px-2 rounded-full delete" type="button">X</button></td>
@@ -62,7 +62,12 @@ class UI {
   // Update a note
   static updateNote(el) {
 
-    const id = el.parentElement.parentElement.firstElementChild.textContent
+    let id = el.parentElement.firstElementChild.textContent
+    if (el.classList.contains('text')) {
+      id = el.parentElement.parentElement.firstElementChild.textContent
+    }
+
+    // console.log(id)
 
     const notes = Store.getNotes()
     const note = notes.filter(e => e.id == id)[0]
@@ -75,22 +80,28 @@ class UI {
     if (el.classList.contains('text')) {
       // console.log(el.textContent)
       const text = prompt('How change ?', el.textContent)
-      el.textContent = text
+      const finalText = (text == null ? 'Please note something!' : text)
+      el.textContent = finalText
 
-      newNote = { ...note, text }
+      newNote = { ...note, text: finalText }
     }
 
     if (el.classList.contains('cost')) {
       // console.log(el.textContent)
       // const cost = prompt('How much ?', el.textContent)
       const cost = '฿ ' + prompt('How much ?', el.textContent).replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
+      const newCost = cost.toString().replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",")
       el.textContent = cost
+      console.log(cost)
+      console.log(newCost)
 
-      newNote = { ...note, 'cost': cost }
+      console.log(newNote)
+
+
+      newNote = { ...note, cost: newCost }
     }
 
-    // Update note from Store
+    // Update note to Store
     Store.updateNote(id, newNote)
   }
 
@@ -113,7 +124,7 @@ class Store {
     const notes = Store.getNotes()
     let total = 0
 
-    total = notes.reduce((sum, note) => sum + parseInt(note.cost.replace(/\D/g, '')), 0)
+    total = notes.reduce((sum, note) => sum + parseInt(note.cost.toString().replace(/\D/g, '')), 0)
     document.querySelector('#total').textContent = '฿ ' + total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
     localStorage.setItem('total', JSON.stringify(total))
