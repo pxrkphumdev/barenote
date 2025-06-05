@@ -11,7 +11,7 @@ class Note {
 class Datetime {
   static getFullTime(date) {
     const d = new Date(date)
-    return `${d.getHours()}:${(d.getMinutes() < 10 ? '0' : '') + d.getMinutes()``}`
+    return `${d.getHours()}:${(d.getMinutes() < 10 ? '0' : '') + d.getMinutes()}`
   }
 }
 
@@ -134,7 +134,7 @@ class Store {
     if (name !== '') {
       localStorage.setItem('name', JSON.stringify(name))
     } else {
-      localStorage.setItem('name', JSON.stringify('clinic somewhere'))
+      localStorage.setItem('name', JSON.stringify('linic somewhere'))
     }
   }
 
