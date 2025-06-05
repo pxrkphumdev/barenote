@@ -134,7 +134,7 @@ class Store {
     if (name !== '') {
       localStorage.setItem('name', JSON.stringify(name))
     } else {
-      localStorage.setItem('name', JSON.stringify('linic somewhere'))
+      localStorage.setItem('name', JSON.stringify('Clinic somewhere'))
     }
   }
 
@@ -268,7 +268,7 @@ function updateDateTime() {
 
   // update the `textContent` property of the `span` element with the `id` of `datetime`
   document.querySelector('#datetime').textContent = currentDateTime;
-  document.title = 'Barenote_' + currentDateTimeString;
+  document.title = 'Barenote_' + currentDateTimeString + '_' + document.querySelector('#name').innerHTML
 }
 
 // call the `updateDateTime` function every second
