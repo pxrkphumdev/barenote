@@ -168,7 +168,7 @@ startBtn.addEventListener('click', () => {
 
   d = new Date()
   timestart.innerHTML = d
-  startShow.innerHTML = `START: ${Datetime.getFullTime(d)}`
+  // startShow.innerHTML = `START: ${Datetime.getFullTime(d)}`
 })
 stopBtn.addEventListener('click', () => {
   // cd1.pauseTimer()
@@ -185,7 +185,7 @@ stopBtn.addEventListener('click', () => {
 
   d = new Date()
   timestop.innerHTML = d
-  stopShow.innerHTML = `STOP: ${Datetime.getFullTime(d)}`
+  // stopShow.innerHTML = `STOP: ${Datetime.getFullTime(d)}`
 
 
   // Add new note
