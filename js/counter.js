@@ -220,7 +220,7 @@ stopBtn.addEventListener("click", () => {
   Store.addNote(note)
   // Add note to UI
   UI.addNoteToList(note)
-
+  // Display total
   UI.displayTotal()
 })
 pauseBtn.addEventListener("click", () => {
