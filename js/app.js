@@ -291,7 +291,7 @@ document.querySelector("#note-list").addEventListener("click", (e) => {
 })
 
 // Event: Export csv file
-document.querySelector("#exportcsv").addEventListener("click", () => {
+document.querySelector("#exportjson").addEventListener("click", () => {
   const name = Store.getName()
   const notes = Store.getNotes()
   const now = new Date()
