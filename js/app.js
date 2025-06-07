@@ -290,6 +290,34 @@ document.querySelector("#note-list").addEventListener("click", (e) => {
   UI.displayTotal()
 })
 
+// Event: Export csv file
+document.querySelector("#exportcsv").addEventListener("click", () => {
+  const name = Store.getName()
+  const notes = Store.getNotes()
+  const now = new Date()
+  const dString = formatDateTime(now)
+  const date = `${dString.year}-${dString.month}-${dString.day}`
+
+  const exportNotes = {
+    "clinic": name,
+    "date": date,
+    "notes": notes,
+  }
+  // console.log(exportNotes)
+  const filename = 'data.json';
+  const jsonStr = JSON.stringify(exportNotes);
+
+  let element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+})
+
+
 function formatDateTime(date) {
   const year = ("0" + date.getFullYear()).slice(-4)
   const month = ("0" + (date.getMonth() + 1)).slice(-2)
