@@ -2,7 +2,7 @@
 class Note {
   constructor(id, text, cost) {
     this.id = id
-      ; (this.text = note), (this.cost = cost)
+    ;(this.text = note), (this.cost = cost)
   }
 }
 
@@ -10,8 +10,9 @@ class Note {
 class Datetime {
   static getFullTime(date) {
     const d = new Date(date)
-    return `${d.getHours()}:${(d.getMinutes() < 10 ? "0" : "") + d.getMinutes()
-      }`
+    return `${d.getHours()}:${
+      (d.getMinutes() < 10 ? "0" : "") + d.getMinutes()
+    }`
   }
 }
 
@@ -58,11 +59,11 @@ class UI {
     row.innerHTML = `
       <th scope="row">${note.id}</th>
       <td class="cost" class="d-inline-flex text-nowrap">${note.cost}</td>
-      <td class="note text-left">
-       <p class="font-light text-xs italic text-gray-500">[${Datetime.getFullTime(
-      note.time.start
-    )} , ${Datetime.getFullTime(note.time.stop)}]</p>
-       <p class="text">${note.text}</p>
+      <td class="note flex text-left">
+       <p class="block w-24 mr-2 font-light text-xs italic text-gray-500">[${Datetime.getFullTime(
+         note.time.start
+       )} , ${Datetime.getFullTime(note.time.stop)}]</p>
+       <p class="text w-full text-wrap">${note.text}</p>
       </td>
       <td><button type="button" class="bg-red-500 text-white px-2 rounded-full delete" type="button">X</button></td>
     `
@@ -299,24 +300,26 @@ document.querySelector("#exportjson").addEventListener("click", () => {
   const date = `${dString.year}-${dString.month}-${dString.day}`
 
   const exportNotes = {
-    "clinic": name,
-    "date": date,
-    "notes": notes,
+    clinic: name,
+    date: date,
+    notes: notes,
   }
   // console.log(exportNotes)
-  const filename = 'data.json';
-  const jsonStr = JSON.stringify(exportNotes);
+  const filename = "data.json"
+  const jsonStr = JSON.stringify(exportNotes)
 
-  let element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(jsonStr));
-  element.setAttribute('download', filename);
+  let element = document.createElement("a")
+  element.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(jsonStr)
+  )
+  element.setAttribute("download", filename)
 
-  element.style.display = 'none';
-  document.body.appendChild(element);
+  element.style.display = "none"
+  document.body.appendChild(element)
 
-  element.click();
+  element.click()
 })
-
 
 function formatDateTime(date) {
   const year = ("0" + date.getFullYear()).slice(-4)
