@@ -169,7 +169,7 @@ startBtn.addEventListener("click", () => {
   cd3.startTimer()
   cd4.startTimer()
   cd5.startTimer()
-  cd4el.classList.remove("hidden")
+  // cd4el.classList.remove("hidden")
   cd5el.classList.remove("hidden")
   startBtn.classList.add("hidden")
   stopBtn.classList.remove("hidden")

@@ -2,7 +2,7 @@
 class Note {
   constructor(id, text, cost) {
     this.id = id
-    ;(this.text = note), (this.cost = cost)
+      ; (this.text = note), (this.cost = cost)
   }
 }
 
@@ -10,9 +10,8 @@ class Note {
 class Datetime {
   static getFullTime(date) {
     const d = new Date(date)
-    return `${d.getHours()}:${
-      (d.getMinutes() < 10 ? "0" : "") + d.getMinutes()
-    }`
+    return `${(d.getHours() < 10 ? "0" : "") + d.getHours()}:${(d.getMinutes() < 10 ? "0" : "") + d.getMinutes()
+      }`
   }
 }
 
@@ -59,10 +58,14 @@ class UI {
     row.innerHTML = `
       <th scope="row">${note.id}</th>
       <td class="cost" class="d-inline-flex text-nowrap">${note.cost}</td>
+      <td class="text-left">
+       <p class="flex w-full mr-2 font-light text-xs italic text-gray-500">[${Datetime.getFullTime(
+      note.time.start
+    )} , ${Datetime.getFullTime(note.time.stop)} | ${Math.floor((Math.abs(new Date(note.time.stop) - new Date(note.time.start)) / (1000 * 60)))}m]</p>
+      </td>
       <td class="note flex text-left">
-       <p class="block w-24 mr-2 font-light text-xs italic text-gray-500">[${Datetime.getFullTime(
-         note.time.start
-       )} , ${Datetime.getFullTime(note.time.stop)}]</p>
+
+      
        <p class="text w-full text-wrap">${note.text}</p>
       </td>
       <td><button type="button" class="bg-red-500 text-white px-2 rounded-full delete" type="button">X</button></td>
