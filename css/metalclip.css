@@ -1,0 +1,35 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0px;
+  font-weight: 300;
+  font-family: 'Courier New', monospace;
+}
+
+body {
+  margin: 25px;
+}
+
+p {
+  padding: 0 10px;
+}
+
+.grid {
+  display: grid;
+  padding: 0;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1em;
+}
+
+.grid {
+  /* display: flex; */
+}
+
+.grid>div {
+  background: lightgray;
+  padding: 15px;
+  min-height: 200px;
+  width: 100%;
+  border-radius: 15px;
+}
