@@ -244,7 +244,6 @@ async function copyToClipboard() {
   try {
     await navigator.clipboard.writeText('a')
     await navigator.clipboard.writeText('b')
-    await navigator.clipboard.writeText('c')
     console.log('Copied to clipboard')
   } catch (error) {
     console.error('Failed to copy: ', error)
@@ -256,7 +255,7 @@ document.addEventListener("DOMContentLoaded", UI.displayName)
 document.addEventListener("DOMContentLoaded", UI.displayNotes)
 document.addEventListener("DOMContentLoaded", UI.displayTotal)
 // 
-document.addEventListener("click", function () { copyToClipboard() })
+// document.addEventListener("click", function () { copyToClipboard() })
 // document.addEventListener("click", function () { getData() })
 
 // Event: Add a note
