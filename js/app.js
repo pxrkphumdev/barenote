@@ -239,10 +239,38 @@ document.querySelector("#name").addEventListener("click", () => {
   UI.displayName(name)
 })
 
+async function getData() {
+  try {
+    const response = await fetch('https://pxrkphumdev.github.io/barenote/data.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log(data); // Your JSON object
+
+    return data
+  } catch (error) {
+    console.error('Failed to fetch json: ', error);
+  }
+}
+
+// Async copyToClipboard
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(`Test`);
+    console.log('Text copied to clipboard');
+  } catch (error) {
+    console.error('Failed to copy: ', error);
+  }
+}
+
 // Event: Display Notes
 document.addEventListener("DOMContentLoaded", UI.displayName)
 document.addEventListener("DOMContentLoaded", UI.displayNotes)
 document.addEventListener("DOMContentLoaded", UI.displayTotal)
+// 
+document.addEventListener("click", function () { copyToClipboard() })
+document.addEventListener("click", function () { getData() })
 
 // Event: Add a note
 // document.querySelector('#note-add').addEventListener('click', () => {
