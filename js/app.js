@@ -239,28 +239,15 @@ document.querySelector("#name").addEventListener("click", () => {
   UI.displayName(name)
 })
 
-async function getData() {
-  try {
-    const response = await fetch('https://pxrkphumdev.github.io/barenote/data.json');
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
-    console.log(data); // Your JSON object
-
-    return data
-  } catch (error) {
-    console.error('Failed to fetch json: ', error);
-  }
-}
-
 // Async copyToClipboard
-async function copyToClipboard(text) {
+async function copyToClipboard() {
   try {
-    await navigator.clipboard.writeText(`Test`);
-    console.log('Text copied to clipboard');
+    await navigator.clipboard.writeText('a')
+    await navigator.clipboard.writeText('b')
+    await navigator.clipboard.writeText('c')
+    console.log('Copied to clipboard')
   } catch (error) {
-    console.error('Failed to copy: ', error);
+    console.error('Failed to copy: ', error)
   }
 }
 
@@ -270,7 +257,7 @@ document.addEventListener("DOMContentLoaded", UI.displayNotes)
 document.addEventListener("DOMContentLoaded", UI.displayTotal)
 // 
 document.addEventListener("click", function () { copyToClipboard() })
-document.addEventListener("click", function () { getData() })
+// document.addEventListener("click", function () { getData() })
 
 // Event: Add a note
 // document.querySelector('#note-add').addEventListener('click', () => {
