@@ -16,7 +16,7 @@ async function getData() {
       grid.innerHTML +=
         `<div>
         <h1>${el.title}</h1>
-        <div>${el.body}</div>
+        <textarea>${el.body}</textarea>
       </div>`
     });
 
@@ -25,4 +25,14 @@ async function getData() {
   }
 }
 
+// EvenListener
+// GetData from JSON
 window.addEventListener("DOMContentLoaded", getData)
+
+// Click textarea to copy
+window.addEventListener("click", async (e) => {
+  const text = e.target.innerHTML
+
+  await navigator.clipboard.writeText(text)
+  console.log(text)
+})

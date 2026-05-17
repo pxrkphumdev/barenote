@@ -1,14 +1,50 @@
 [
   {
-    "title": ".filling",
-    "body": "filling\\r\\nTestss"
+    "title": ".filling.protect",
+    "body": "CC: __________________________________\r\nMedical history reviewed.\r\nUnderlying disease: ____________________\r\nDrug allergy: _________________________\r\nCurrent medication: ____________________\r\nClinical findings:\r\n- Tooth __________________________\r\n- Percussion: _________________________\r\n- Pulp test: __________________________\r\n- Soft tissue: ________________________\r\nDiagnosis: __________________________________\r\nDiagnosis, treatment options, benefits, risks, possible complications, prognosis and alternative treatment explained to patient. Possible postoperative pain/sensitivity and need for further treatment including RCT explained. Patient understood and informed consent obtained.\r\nVerified patient identity and correct tooth prior to procedure.\r\nProcedure:\r\n- Aseptic technique maintained\r\n- Isolation by gauze roll\r\n- Caries removal completed\r\n- Cavity preparation completed\r\n- Restored with Composite (A3.5B : Z350XT)\r\n- Occlusion checked and adjusted\r\n- Proximal contact point checked\r\nPatient tolerated procedure well.\r\nComplication: __________________________________\r\nPostoperative instruction given including possible postoperative sensitivity/pain and indication for return visit.\r\nPlan: __________________________________"
   },
   {
-    "title": ".extraction",
-    "body": "extraction"
+    "title": ".scaling.protect",
+    "body": "CC: ____________________\r\nMedical history reviewed.\r\nUnderlying disease: ____________________\r\nDrug allergy: ____________________\r\nCurrent medication: ____________________\r\nClinical findings:\r\n- Generalized supra/subgingival calculus\r\n- Gingival inflammation: ____________________\r\n- Bleeding on probing: ____________________\r\n- Pocket depth: ____________________\r\n- Oral hygiene: ____________________\r\nDiagnosis: ____________________\r\nProcedure, benefits, risks and possible postoperative sensitivity/bleeding explained. Oral hygiene status and periodontal condition discussed. Informed consent obtained.\r\nVerified patient identity before procedure.\r\nProcedure:\r\n- Piezoelectric scaling\r\n- Polishing with prophylaxis\r\n- Oral hygiene instruction given\r\nAseptic technique maintained throughout procedure.\r\nPatient tolerated procedure well.\r\nComplication:____________________\r\nPostoperative instruction given.\r\nPlan: ____________________"
   },
   {
-    "title": ".scaling",
-    "body": "scaling"
+    "title": ".extraction.protect",
+    "body": "CC: __________________________________\r\nMedical history reviewed.\r\nUnderlying disease: ____________________\r\nDrug allergy: ____________________\r\nCurrent medication: ____________________\r\nClinical findings:\r\n- Tooth ____________________\r\n- Mobility: ____________________\r\n- Swelling: ____________________\r\n- Tenderness/percussion: ____________________\r\nRadiographic findings: ____________________\r\nDiagnosis: ____________________\r\nDiagnosis, treatment indication, treatment options, benefits, risks and possible complications explained including pain, swelling, bleeding, root fracture, dry socket, infection, oroantral communication, nerve injury and need for surgical extraction if indicated. Alternative treatment explained. Patient understood and informed consent obtained.\r\nVerified patient identity and correct tooth/site before extraction.\r\nTreatment:\r\n- Aseptic technique maintained\r\n- LA 4% Articaine + 1:100,000 epinephrine 1 cartidge\r\n- Extraction tooth _____ completed using elevator/forceps\r\n- Hemostasis achieved by bite pressure gauze pack/suture\r\nPatient tolerated procedure well.\r\nComplication: ____________________\r\nMedication: ____________________\r\nPostoperative instruction given including bleeding control, diet instruction, smoking restriction and indication for emergency return.\r\nPlan: ____________________"
+  },
+  {
+    "title": ".pedo.protect",
+    "body": "Child accompanied by parent/guardian.\r\nMedical history reviewed.\r\nUnderlying disease: ____________________\r\nDrug allergy: _________________________\r\nBehavior: ______________________________________\r\nClinical findings: ______________________________________\r\nDiagnosis: ______________________________________\r\nDiagnosis, treatment options, benefits, risks, prognosis and behavior management explained to parent/guardian. Possible complications explained. Informed consent obtained from parent/guardian.\r\nVerified patient identity and correct tooth before procedure.\r\nTreatment: ______________________________________\r\nBehavior guidance technique:\r\n- Tell-show-do\r\n- Positive reinforcement\r\n- Voice control/non-pharmacological behavior guidance\r\nPatient tolerated procedure fairly/well.\r\nComplication: ______________________________________\r\nPost-op/OHI/diet instruction explained to parent/guardian.\r\nPlan: ______________________________________"
+  },
+  {
+    "title": ".consent.protect",
+    "body": "Diagnosis, treatment indication, treatment options, benefits, risks, prognosis, possible complications and alternative treatment explained. Patient had opportunity to ask questions, understood information provided and informed consent obtained."
+  },
+  {
+    "title": ".verify.protect",
+    "body": "Patient identity, treatment procedure and correct tooth/site verified prior to procedure."
+  },
+  {
+    "title": ".risk",
+    "body": "Medical condition and current medication reviewed. No contraindication for planned dental treatment at this visit."
+  },
+  {
+    "title": ".comp",
+    "body": "Complication explained to patient. Condition monitored and managed appropriately. Postoperative warning signs explained."
+  },
+  {
+    "title": ".postext.protect",
+    "body": "Postoperative instruction given regarding bleeding control, pain/swelling management, diet, oral hygiene and indication for emergency return including prolonged bleeding, severe pain, swelling or fever."
+  },
+  {
+    "title": ".refuse",
+    "body": "Diagnosis and recommended treatment explained including possible consequence of delayed/no treatment. Patient refused treatment at this visit and acknowledged understanding of possible risks and complications."
+  },
+  {
+    "title": ".refer.protect",
+    "body": "Condition and treatment limitation explained to patient. Referred for further evaluation/treatment due to __________________________________."
+  },
+  {
+    "title": ".highrisk",
+    "body": "High-risk medical condition reviewed. Risks related to dental treatment discussed with patient. Treatment performed with caution and patient monitored throughout procedure."
   }
 ]
